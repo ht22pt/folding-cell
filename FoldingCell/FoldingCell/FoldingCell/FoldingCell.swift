@@ -154,13 +154,13 @@ public class FoldingCell: UITableViewCell {
     // copy constraints from containerView
     var newConstraints = [NSLayoutConstraint]()
     for constraint in self.contentView.constraints {
-      if let item = constraint.firstItem as? UIView   where item == containerView {
+      if let item = constraint.firstItem as? UIView where item == containerView {
         let newConstraint = NSLayoutConstraint( item: anAnimationView, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: constraint.secondItem, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
         
         newConstraints.append(newConstraint)
-      } else if let item: UIView = constraint.secondItem as? UIView  where item == containerView {
+      } else if let item: UIView = constraint.secondItem as? UIView where item == containerView {
         let newConstraint = NSLayoutConstraint(item: constraint.firstItem, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: anAnimationView, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
@@ -270,7 +270,7 @@ public class FoldingCell: UITableViewCell {
    - parameter animated:   Specify true if you want to animate the change in visibility or false if you want immediately.
    - parameter completion: A block object to be executed when the animation sequence ends.
    */
-  public func selectedAnimation(isSelected: Bool, animated: Bool, completion: (Void -> Void)?) {
+  public func selectedAnimation(isSelected: Bool, animated: Bool, completion: ((Void) -> Void)?) {
     
     if isSelected {
       
