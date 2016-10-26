@@ -154,13 +154,13 @@ public class FoldingCell: UITableViewCell {
     // copy constraints from containerView
     var newConstraints = [NSLayoutConstraint]()
     for constraint in self.contentView.constraints {
-      if let item = constraint.firstItem as? UIView where item == containerView {
+      if let item = constraint.firstItem as? UIView  , item == containerView {
         let newConstraint = NSLayoutConstraint( item: anAnimationView, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: constraint.secondItem, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
         
         newConstraints.append(newConstraint)
-      } else if let item: UIView = constraint.secondItem as? UIView where item == containerView {
+      } else if let item: UIView = constraint.secondItem as? UIView , item == containerView {
         let newConstraint = NSLayoutConstraint(item: constraint.firstItem, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: anAnimationView, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
@@ -328,7 +328,7 @@ public class FoldingCell: UITableViewCell {
     return durations
   }
   
-  func openAnimation(completion completion: (Void -> Void)?) {
+  func openAnimation(completion: (Void -> Void)?) {
     
     removeImageItemsFromAnimationView()
     addImageItemsToAnimationView()
@@ -380,7 +380,7 @@ public class FoldingCell: UITableViewCell {
     }
   }
   
-  func closeAnimation(completion completion: (Void -> Void)?) {
+  func closeAnimation(completion: (Void -> Void)?) {
     
     removeImageItemsFromAnimationView()
     addImageItemsToAnimationView()
@@ -466,7 +466,7 @@ public class RotatedView: UIView {
 }
 
 
-extension RotatedView:CAAnimationDelegate {
+extension RotatedView : CAAnimationDelegate {
   
   func rotatedX(angle : CGFloat) {
     var allTransofrom    = CATransform3DIdentity;
@@ -506,7 +506,7 @@ public func animationDidStart(anim: CAAnimation) {
     self.alpha = 1
   }
   
-    public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
     if hiddenAfterAnimation {
       self.alpha = 0
     }
